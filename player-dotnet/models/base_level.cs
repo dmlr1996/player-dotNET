@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace player_dotnet.models
 {
-    public class BaseLevels
+    public class BaseLevel
     {
         public UInt32 MaxPopulation = 0;
         public UInt32 UpgradeCost = 0;
