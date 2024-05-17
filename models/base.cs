@@ -1,9 +1,9 @@
-﻿using System;
+﻿using player_dotnet.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using player_dotnet.models;
 
 namespace player_dotnet.models
 {
