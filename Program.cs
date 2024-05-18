@@ -1,22 +1,17 @@
-﻿using Microsoft.AspNetCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using player_dotnet.logic;
+using player_dotnet.models;
 
-namespace player_dotnet
+var playerAction = new List<PlayerAction>()
 {
-    public class Program
-    {
-        var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
-        var app = builder.Build();
+    new PlayerAction()
+};
 
-        app.MapPost("/", (System.Text.Json.JsonElement body) => "{\"bet\": \"" + Strategy.decide(Newtonsoft.Json.JsonConvert.DeserializeObject<Table>(body.ToString())).bet + "\"}");
+var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
+var app = builder.Build();
 
-        app.MapGet("/", () => "Player C#/.net");
+app.MapPost("/",
+    (System.Text.Json.JsonElement gameState) => Newtonsoft.Json.JsonConvert.SerializeObject(playerAction[0]));
 
+app.MapGet("/", () => "Player C#/.net");
 
-        app.Run();
-    }
-}
+app.Run();
