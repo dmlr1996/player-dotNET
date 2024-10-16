@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 3000
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
@@ -15,5 +15,5 @@ RUN dotnet publish "player-dotnet.csproj" -c Release -o /app/publish /p:UseAppHo
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-EXPOSE 80
+EXPOSE 3000
 ENTRYPOINT ["dotnet", "player-dotnet.dll"]
