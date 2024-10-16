@@ -6,8 +6,9 @@ var playerAction = new List<PlayerAction>()
     new PlayerAction()
 };
 
-var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
-var app = builder.Build();
+var app = WebApplication.Create(args);
+
+app.Urls.Add("http://*:3000");
 
 app.MapPost("/",
     (System.Text.Json.JsonElement gameState) => Newtonsoft.Json.JsonConvert.SerializeObject(playerAction[0]));
