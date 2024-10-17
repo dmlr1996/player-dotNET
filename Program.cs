@@ -1,5 +1,4 @@
-﻿using player_dotnet.logic;
-using player_dotnet.models;
+﻿using PlayerDotNet.models;
 
 var playerAction = new List<PlayerAction>()
 {
