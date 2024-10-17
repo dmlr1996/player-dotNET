@@ -1,6 +1,6 @@
-﻿using player_dotnet.models;
+﻿using PlayerDotNet.models;
 
-namespace player_dotnet.logic
+namespace PlayerDotNet.logic
 {
     public class Strategy
     {
