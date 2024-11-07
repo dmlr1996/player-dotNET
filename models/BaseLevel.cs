@@ -1,9 +1,17 @@
-﻿namespace PlayerDotNet.models
+﻿using Newtonsoft.Json;
+
+namespace PlayerDotNet.models
 {
     public class BaseLevel
     {
-        public UInt32 MaxPopulation = 0;
-        public UInt32 UpgradeCost = 0;
-        public UInt32 SpawnRate = 0;
+        
+        [JsonProperty("max_population")]
+        public UInt32 MaxPopulation { get; set; }
+        
+        [JsonProperty("upgrade_cost")]
+        public UInt32 UpgradeCost { get; set; }
+        
+        [JsonProperty("spawn_rate")]
+        public UInt32 SpawnRate { get; set; }
     }
 }

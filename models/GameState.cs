@@ -1,10 +1,20 @@
-﻿namespace PlayerDotNet.models
+﻿using Newtonsoft.Json;
+
+namespace PlayerDotNet.models
 {
     public class GameState
     {
-        public List<BoardAction> Actions = new List<BoardAction>();
-        public List<Base> Bases = new List<Base>();
-        public GameConfig Config = new GameConfig();
-        public Game Game = new Game();
+        [JsonProperty("actions")]
+        public List<BoardAction> Actions { get; set; }
+
+        [JsonProperty("bases")]
+        public List<Base> Bases { get; set; }
+
+        [JsonProperty("config")] 
+        public GameConfig Config { get; set; }
+
+        [JsonProperty("game")] 
+        public Game Game { get; set; }
     }
+    
 }

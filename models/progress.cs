@@ -1,8 +1,14 @@
-﻿namespace PlayerDotNet.models
+﻿using Newtonsoft.Json;
+
+namespace PlayerDotNet.models
 {
     public class Progress
     {
-        public UInt32 Distance = 0;
-        public UInt32 Traveled = 0;
+        
+        [JsonProperty("distance")]
+        public UInt32 Distance { get; set; }
+        
+        [JsonProperty("traveled")]
+        public UInt32 Traveled { get; set; }
     }
 }

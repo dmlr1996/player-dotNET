@@ -1,12 +1,25 @@
-﻿namespace PlayerDotNet.models
+﻿using Newtonsoft.Json;
+
+namespace PlayerDotNet.models
 {
     public class BoardAction
     {
-        public UInt32 Src = 0;
-        public UInt32 Dest = 0;
-        public UInt32 Amount = 0;
-        public Guid Uuid = new Guid();
-        public UInt32 Player = 0;
-        public Progress Progress = new Progress();
+        [JsonProperty("src")]
+        public UInt32 Src { get; set; }
+        
+        [JsonProperty("dest")]
+        public UInt32 Dest { get; set; }
+
+        [JsonProperty("amount")]
+        public UInt32 Amount { get; set; }
+        
+        [JsonProperty("uuid")]
+        public Guid Uuid { get; set; }
+        
+        [JsonProperty("player")]
+        public UInt32 Player { get; set; }
+        
+        [JsonProperty("progress")]
+        public Progress Progress { get; set; }
     }
 }
