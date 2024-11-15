@@ -1,9 +1,15 @@
-﻿namespace PlayerDotNet.models
+﻿using Newtonsoft.Json;
+
+namespace PlayerDotNet.models
 {
     public class PlayerAction
     {
-        public UInt32 Src = 0;
-        public UInt32 Dest = 0;
-        public UInt32 Amount = 0;
+        [JsonProperty("src")]
+        public UInt32 Src { get; set; }
+
+        [JsonProperty("dest")] public UInt32 Dest { get; set; }
+
+        [JsonProperty("amount")]
+        public UInt32 Amount { get; set; }
     }
 }
