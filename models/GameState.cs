@@ -5,16 +5,15 @@ namespace PlayerDotNet.models
     public class GameState
     {
         [JsonProperty("actions")]
-        public List<BoardAction> Actions { get; set; }
+        public required List<BoardAction> Actions { get; set; }
 
         [JsonProperty("bases")]
-        public List<Base> Bases { get; set; }
+        public required List<Base> Bases { get; set; }
 
-        [JsonProperty("config")] 
-        public GameConfig Config { get; set; }
+        [JsonProperty("config")]
+        public required GameConfig Config { get; set; }
 
-        [JsonProperty("game")] 
-        public Game Game { get; set; }
+        [JsonProperty("game")]
+        public required Game Game { get; set; }
     }
-    
 }

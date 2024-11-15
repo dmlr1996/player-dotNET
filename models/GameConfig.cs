@@ -4,11 +4,10 @@ namespace PlayerDotNet.models
 {
     public class GameConfig
     {
-        
         [JsonProperty("base_levels")]
-        public List<BaseLevel> BaseLevels { get; set; }
-        
+        public required List<BaseLevel> BaseLevels { get; set; }
+
         [JsonProperty("paths")]
-        public PathConfig Paths { get; set; }
+        public required PathConfig Paths { get; set; }
     }
 }

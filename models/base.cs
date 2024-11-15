@@ -5,7 +5,7 @@ namespace PlayerDotNet.models
     public class Base
     {
         [JsonProperty("position")]
-        public Position Position { get; set; }
+        public required Position Position { get; set; }
 
         [JsonProperty("uid")]
         public UInt32 Uid { get; set; }
@@ -23,6 +23,6 @@ namespace PlayerDotNet.models
         public UInt32 UnitsUntilUpgrade { get; set; }
 
         [JsonProperty("name")]
-        public UInt32 Name { get; set; }
+        public required string Name { get; set; }
     }
 }
