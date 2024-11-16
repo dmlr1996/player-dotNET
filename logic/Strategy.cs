@@ -16,7 +16,7 @@ namespace PlayerDotNet.logic
 
             var targetBases =   GetListOfBaseAndDistances(gameState, myStartBase, listOfMyBases);
 
-            var baseScores = CalculateScoreOfBases(targetBases, gameState);
+            var baseScores = CalculateScoreOfBases(targetBases, gameState, listOfMyBases);
 
             //UpgradeMyBases(listOfMyBases, playerActions);
 
@@ -27,16 +27,19 @@ namespace PlayerDotNet.logic
                 Amount = myStartBase.Population
             });
 
-            CreateLog(myPlayerId, gameState);
+            CreateLog(myPlayerId, gameState, listOfMyBases);
 
             return playerActions;
         }
 
-        private static void CreateLog(UInt32 myPlayerId, GameState gameState)
+        private static void CreateLog(UInt32 myPlayerId, GameState gameState, List<Base> listOfMyBases)
         {
             Console.WriteLine("My ID: {0}", myPlayerId);
             Console.WriteLine("Incoming gameState:");
-            gameState.Bases.ForEach(i => Console.WriteLine("Player: " + i.Player.ToString() + "Base UID: " + i.Uid.ToString())); ;
+            gameState.Bases.ForEach(i => Console.WriteLine("Player: " + i.Player.ToString() + " Base UID: " + i.Uid.ToString()));
+            Console.WriteLine();
+            Console.WriteLine("My Bases: ");
+            listOfMyBases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player of Base: " + i.Player.ToString()));
         }
 
         //private static void UpgradeMyBases(List<Base> listOfMyBases, List<PlayerAction> playerActions)
