@@ -12,7 +12,7 @@ namespace PlayerDotNet.logic
 
             var listOfMyBases = GetListOfMyBases(gameState, myPlayerId);
 
-            var startAttackBase = GetBaseWithMostPopulation(gameState);
+            var startAttackBase = GetBaseWithLeastPopulation(gameState);
 
             var targetBases =   GetListOfBaseAndDistances(gameState, startAttackBase, listOfMyBases);
 
@@ -20,12 +20,12 @@ namespace PlayerDotNet.logic
 
             UpgradeMyBases(listOfMyBases, myPlayerActions);
 
-            CreateLog(myPlayerId, gameState, listOfMyBases, myPlayerActions);
+            CreateLog(myPlayerId, gameState, listOfMyBases, myPlayerActions, startAttackBase);
 
             return myPlayerActions;
         }
 
-        private static void CreateLog(UInt32 myPlayerId, GameState gameState, List<Base> listOfMyBases, List<PlayerAction> listOfMyPlayerActions)
+        private static void CreateLog(UInt32 myPlayerId, GameState gameState, List<Base> listOfMyBases, List<PlayerAction> listOfMyPlayerActions, Base attackBase)
         {
             Console.WriteLine("My ID: {0}", myPlayerId);
             Console.WriteLine("Game ID: " + gameState.Game.Uid.ToString());
@@ -35,6 +35,9 @@ namespace PlayerDotNet.logic
             Console.WriteLine();
             Console.WriteLine("gameState Bases:");
             gameState.Bases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player: " + i.Player.ToString() + " Population: " + i.Population.ToString() + " Level: " + i.Level.ToString()));
+            Console.WriteLine();
+            Console.WriteLine("Attack Base: ");
+            Console.WriteLine("Base UID: " + attackBase.Uid.ToString() + " Player: " + attackBase.Player.ToString() + " Population: " + attackBase.Population.ToString() + " Level: " + attackBase.Level.ToString());
             Console.WriteLine();
             Console.WriteLine("My Bases: ");
             listOfMyBases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player: " + i.Player.ToString() + " Population: " + i.Population.ToString() + " Level: " + i.Level.ToString()));
@@ -119,12 +122,12 @@ namespace PlayerDotNet.logic
             return myBases;
         }
 
-        private static Base? GetBaseWithMostPopulation(GameState? gameState)
+        private static Base? GetBaseWithLeastPopulation(GameState? gameState)
         {
             if (gameState == null || gameState.Bases.Count == 0)
                 return null;
 
-            return gameState.Bases.OrderByDescending(b => b.Population).First();
+            return gameState.Bases.OrderByDescending(b => b.Population).Last();
         }
 
 
