@@ -10,10 +10,6 @@ namespace PlayerDotNet.logic
             var playerActions = new List<PlayerAction>();
             var myPlayerId = gameState.Game.Player;
 
-            Console.WriteLine("My ID: {0}", myPlayerId);
-            Console.WriteLine("Incoming gameState:");
-            gameState.Bases.ForEach(i => Console.WriteLine(i.Player));
-
             var listOfMyBases = GetListOfMyBases(gameState, myPlayerId);
 
             var myStartBase = GetBaseWithMostPopulation(gameState);
@@ -31,7 +27,16 @@ namespace PlayerDotNet.logic
                 Amount = myStartBase.Population
             });
 
+            CreateLog(myPlayerId, gameState);
+
             return playerActions;
+        }
+
+        private static void CreateLog(UInt32 myPlayerId, GameState gameState)
+        {
+            Console.WriteLine("My ID: {0}", myPlayerId);
+            Console.WriteLine("Incoming gameState:");
+            gameState.Bases.ForEach(i => Console.WriteLine("Player: " + i.Player.ToString() + "Base UID: " + i.Uid.ToString())); ;
         }
 
         //private static void UpgradeMyBases(List<Base> listOfMyBases, List<PlayerAction> playerActions)
