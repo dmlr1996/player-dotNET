@@ -69,14 +69,14 @@ namespace PlayerDotNet.logic
 
             switch (baseLevel)
             {
-                case 0 when basePopulation >= 10:
-                case 1 when basePopulation >= 20:
-                case 2 when basePopulation >= 30:
-                case 3 when basePopulation >= 40:
-                case 4 when basePopulation >= 50:
-                case 5 when basePopulation >= 100:
-                case 6 when basePopulation >= 200:
-                case 7 when basePopulation >= 400:
+                case 0 when basePopulation >= 15:
+                case 1 when basePopulation >= 30:
+                case 2 when basePopulation >= 50:
+                case 3 when basePopulation >= 70:
+                case 4 when basePopulation >= 150:
+                case 5 when basePopulation >= 200:
+                case 6 when basePopulation >= 300:
+                case 7 when basePopulation >= 450:
                 case 8 when basePopulation >= 600:
                 case 9 when basePopulation >= 800:
                 case 10 when basePopulation >= 1000:
