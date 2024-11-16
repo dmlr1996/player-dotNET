@@ -7,11 +7,12 @@ namespace PlayerDotNet.logic
     {
         public static List<PlayerAction> Decide(GameState? gameState)
         {
-            Console.WriteLine("Incoming gameState:");
-            gameState.Bases.ForEach(i => Console.Write("{0}",i));
-
             var playerActions = new List<PlayerAction>();
             var myPlayerId = gameState.Game.Player;
+
+            Console.WriteLine("My ID: {0}", myPlayerId);
+            Console.WriteLine("Incoming gameState:");
+            gameState.Bases.ForEach(i => Console.WriteLine(i.Player));
 
             var listOfMyBases = GetListOfMyBases(gameState, myPlayerId);
 
