@@ -12,22 +12,24 @@ namespace PlayerDotNet.logic
 
             var listOfMyBases = GetListOfMyBases(gameState, myPlayerId);
 
-            var myStartBase = GetBaseWithMostPopulation(gameState);
+            var startAttackBase = GetBaseWithMostPopulation(gameState);
 
-            var targetBases =   GetListOfBaseAndDistances(gameState, myStartBase, listOfMyBases);
+            var targetBases =   GetListOfBaseAndDistances(gameState, startAttackBase, listOfMyBases);
 
             var baseScores = CalculateScoreOfBases(targetBases, gameState);
 
             //UpgradeMyBases(listOfMyBases, playerActions);
 
-            playerActions.Add(new PlayerAction
-            {
-                Src = myStartBase.Uid,
-                Dest = myStartBase.Uid,
-                Amount = myStartBase.Population
-            });
+            listOfMyBases.ForEach(i =>
+                playerActions.Add(new PlayerAction
+                    {
+                        Src = i.Uid,
+                        Dest = i.Uid,
+                        Amount = i.Population
+                    }
+                    ));
 
-            CreateLog(myPlayerId, gameState, listOfMyBases, myStartBase);
+            CreateLog(myPlayerId, gameState, listOfMyBases, startAttackBase);
 
             return playerActions;
         }
