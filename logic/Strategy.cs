@@ -27,12 +27,12 @@ namespace PlayerDotNet.logic
                 Amount = myStartBase.Population
             });
 
-            CreateLog(myPlayerId, gameState, listOfMyBases);
+            CreateLog(myPlayerId, gameState, listOfMyBases, myStartBase);
 
             return playerActions;
         }
 
-        private static void CreateLog(UInt32 myPlayerId, GameState gameState, List<Base> listOfMyBases)
+        private static void CreateLog(UInt32 myPlayerId, GameState gameState, List<Base> listOfMyBases, Base myStartBase)
         {
             Console.WriteLine("My ID: {0}", myPlayerId);
             Console.WriteLine("Incoming gameState:");
@@ -40,6 +40,9 @@ namespace PlayerDotNet.logic
             Console.WriteLine();
             Console.WriteLine("My Bases: ");
             listOfMyBases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player of Base: " + i.Player.ToString()));
+            Console.WriteLine();
+            Console.WriteLine("My Start Base: " + myStartBase.Uid.ToString());
+            Console.WriteLine();
         }
 
         //private static void UpgradeMyBases(List<Base> listOfMyBases, List<PlayerAction> playerActions)
