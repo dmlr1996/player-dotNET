@@ -18,16 +18,7 @@ namespace PlayerDotNet.logic
 
             var baseScores = CalculateScoreOfBases(targetBases, gameState);
 
-            //UpgradeMyBases(listOfMyBases, playerActions);
-
-            listOfMyBases.ForEach(i =>
-                playerActions.Add(new PlayerAction
-                    {
-                        Src = i.Uid,
-                        Dest = i.Uid,
-                        Amount = i.Population
-                    }
-                    ));
+            UpgradeMyBases(listOfMyBases, playerActions);
 
             CreateLog(myPlayerId, gameState, listOfMyBases, playerActions);
 
@@ -48,25 +39,49 @@ namespace PlayerDotNet.logic
             Console.WriteLine();
         }
 
-        //private static void UpgradeMyBases(List<Base> listOfMyBases, List<PlayerAction> playerActions)
-        //{
-        //    var listOfPopulations = new List<KeyValuePair<uint, uint>>();
+        private static void UpgradeMyBases(List<Base> listOfMyBases, List<PlayerAction> playerActions)
+        {
+            foreach (var bBase in listOfMyBases)
+            {
+                if (bBase.Level >= 14) return;
+                if (DecideIfUpgrade(bBase))
+                {
+                    playerActions.Add(new PlayerAction
+                    {
+                        Src = bBase.Uid,
+                        Dest = bBase.Uid,
+                        Amount = bBase.Population
+                    });
+                }
+            }
+        }
 
-        //    foreach (var myBase in listOfMyBases)
-        //    {
-        //        if (myBase.Population < 100)
-        //        {
-        //            playerActions.Add(new PlayerAction
-        //            {
-        //                Action = "upgrade",
-        //                Base = myBase.Uid
-        //            });
-        //        }
-        //        listOfPopulations.Add(new KeyValuePair<uint, uint>(myBase.Uid, myBase.Population));
-        //    }
+        private static bool DecideIfUpgrade(Base bBase)
+        {
+            var baseLevel = bBase.Level;
+            var basePopulation = bBase.Population;
 
-            
-        //}
+            switch (baseLevel)
+            {
+                case 0 when basePopulation >= 10:
+                case 1 when basePopulation >= 20:
+                case 2 when basePopulation >= 30:
+                case 3 when basePopulation >= 40:
+                case 4 when basePopulation >= 50:
+                case 5 when basePopulation >= 100:
+                case 6 when basePopulation >= 200:
+                case 7 when basePopulation >= 400:
+                case 8 when basePopulation >= 600:
+                case 9 when basePopulation >= 800:
+                case 10 when basePopulation >= 1000:
+                case 11 when basePopulation >= 1500:
+                case 12 when basePopulation >= 2000:
+                case 13 when basePopulation >= 3000:
+                    return true;
+                default:
+                    return false;
+            }
+        }
 
         public static Base CalculateScoreOfBases(List<KeyValuePair<uint, int>> targetBases, GameState gameState)
         {
