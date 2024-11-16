@@ -41,7 +41,7 @@ namespace PlayerDotNet.logic
             gameState.Bases.ForEach(i => Console.WriteLine("Player: " + i.Player.ToString() + " Base UID: " + i.Uid.ToString()));
             Console.WriteLine();
             Console.WriteLine("My Bases: ");
-            listOfMyBases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player of Base: " + i.Player.ToString()));
+            listOfMyBases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player of Base: " + i.Player.ToString() + " Population: " + i.Population.ToString()));
             Console.WriteLine();
             Console.WriteLine("My Start Base: " + myStartBase.Uid.ToString());
             Console.WriteLine();
