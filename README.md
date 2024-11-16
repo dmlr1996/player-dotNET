@@ -1,5 +1,13 @@
 # BitWars Player .NET
 
+## Information about usage of kubectl
+kubectl -n team-05 --kubeconfig=.\team-05.yaml get pods
+
+-> NAME                               READY   STATUS    RESTARTS   AGE
+-> hawk-tuah-player-f6bd844f5-bpfjv   1/1     Running   0          11m
+
+kubectl -n team-05 --kubeconfig=.\team-05.yaml logs -f hawk-tuah-player-f6bd844f5-bpfjv
+
 Your task is to implement the best bitWars player logic! :)
 
 ## Preparation
