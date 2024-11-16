@@ -76,7 +76,7 @@ namespace PlayerDotNet.logic
                 case 1 when basePopulation >= 30:
                 case 2 when basePopulation >= 50:
                 case 3 when basePopulation >= 70:
-                case 4 when basePopulation >= 150:
+                case 4 when basePopulation >= 200:
                 case 5 when basePopulation >= 200:
                 case 6 when basePopulation >= 300:
                 case 7 when basePopulation >= 450:
