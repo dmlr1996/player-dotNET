@@ -28,6 +28,8 @@ namespace PlayerDotNet.logic
         private static void CreateLog(UInt32 myPlayerId, GameState gameState, List<Base> listOfMyBases, List<PlayerAction> listOfPlayerActions)
         {
             Console.WriteLine("My ID: {0}", myPlayerId);
+            Console.WriteLine(gameState.Game.Uid.ToString());
+            Console.WriteLine();
             Console.WriteLine("Incoming gameState:");
             gameState.Bases.ForEach(i => Console.WriteLine("Player: " + i.Player.ToString() + " Base UID: " + i.Uid.ToString()));
             Console.WriteLine();
