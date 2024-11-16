@@ -16,7 +16,7 @@ namespace PlayerDotNet.logic
 
             var targetBases =   GetListOfBaseAndDistances(gameState, myStartBase, listOfMyBases);
 
-            var baseScores = CalculateScoreOfBases(targetBases, gameState, listOfMyBases);
+            var baseScores = CalculateScoreOfBases(targetBases, gameState);
 
             //UpgradeMyBases(listOfMyBases, playerActions);
 
