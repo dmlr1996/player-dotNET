@@ -29,21 +29,22 @@ namespace PlayerDotNet.logic
                     }
                     ));
 
-            CreateLog(myPlayerId, gameState, listOfMyBases, startAttackBase);
+            CreateLog(myPlayerId, gameState, listOfMyBases, playerActions);
 
             return playerActions;
         }
 
-        private static void CreateLog(UInt32 myPlayerId, GameState gameState, List<Base> listOfMyBases, Base myStartBase)
+        private static void CreateLog(UInt32 myPlayerId, GameState gameState, List<Base> listOfMyBases, List<PlayerAction> listOfPlayerActions)
         {
             Console.WriteLine("My ID: {0}", myPlayerId);
             Console.WriteLine("Incoming gameState:");
             gameState.Bases.ForEach(i => Console.WriteLine("Player: " + i.Player.ToString() + " Base UID: " + i.Uid.ToString()));
             Console.WriteLine();
             Console.WriteLine("My Bases: ");
-            listOfMyBases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player of Base: " + i.Player.ToString() + " Population: " + i.Population.ToString()));
+            listOfMyBases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player of Base: " + i.Player.ToString() + " Population: " + i.Population.ToString() + " Level: " + i.Level.ToString()));
             Console.WriteLine();
-            Console.WriteLine("My Start Base: " + myStartBase.Uid.ToString());
+            Console.WriteLine("My Actions: ");
+            listOfPlayerActions.ForEach(i => Console.WriteLine("Src: " + i.Src.ToString() + " Dest: " + i.Dest.ToString() + " Amount: " + i.Amount.ToString()));
             Console.WriteLine();
         }
 
