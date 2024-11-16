@@ -7,6 +7,9 @@ namespace PlayerDotNet.logic
     {
         public static List<PlayerAction> Decide(GameState? gameState)
         {
+            Console.WriteLine("Incoming gameState:");
+            Console.WriteLine(gameState);
+
             var playerActions = new List<PlayerAction>();
             var myPlayerId = gameState.Game.Player;
 
