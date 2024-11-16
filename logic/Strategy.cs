@@ -7,7 +7,7 @@ namespace PlayerDotNet.logic
     {
         public static List<PlayerAction> Decide(GameState? gameState)
         {
-            var playerActions = new List<PlayerAction>();
+            var myPlayerActions = new List<PlayerAction>();
             var myPlayerId = gameState.Game.Player;
 
             var listOfMyBases = GetListOfMyBases(gameState, myPlayerId);
@@ -18,26 +18,29 @@ namespace PlayerDotNet.logic
 
             var baseScores = CalculateScoreOfBases(targetBases, gameState);
 
-            UpgradeMyBases(listOfMyBases, playerActions);
+            UpgradeMyBases(listOfMyBases, myPlayerActions);
 
-            CreateLog(myPlayerId, gameState, listOfMyBases, playerActions);
+            CreateLog(myPlayerId, gameState, listOfMyBases, myPlayerActions);
 
-            return playerActions;
+            return myPlayerActions;
         }
 
-        private static void CreateLog(UInt32 myPlayerId, GameState gameState, List<Base> listOfMyBases, List<PlayerAction> listOfPlayerActions)
+        private static void CreateLog(UInt32 myPlayerId, GameState gameState, List<Base> listOfMyBases, List<PlayerAction> listOfMyPlayerActions)
         {
             Console.WriteLine("My ID: {0}", myPlayerId);
             Console.WriteLine("Game ID: " + gameState.Game.Uid.ToString());
             Console.WriteLine();
-            Console.WriteLine("Incoming gameState:");
-            gameState.Bases.ForEach(i => Console.WriteLine("Player: " + i.Player.ToString() + " Base UID: " + i.Uid.ToString()));
+            Console.WriteLine("gameState Actions");
+            gameState.Actions.ForEach(i => Console.WriteLine("Src: " + i.Src.ToString() + " Dest: " + i.Dest.ToString() + " Amount: " + i.Amount.ToString() + " uuid: " + i.Uuid.ToString() + " Player: " + i.Player.ToString() + " Distance: " + i.Progress.Distance.ToString() + " Travelled: " + i.Progress.Traveled.ToString()));
+            Console.WriteLine();
+            Console.WriteLine("gameState Bases:");
+            gameState.Bases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player: " + i.Player.ToString() + " Population: " + i.Population.ToString() + " Level: " + i.Level.ToString()));
             Console.WriteLine();
             Console.WriteLine("My Bases: ");
-            listOfMyBases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player of Base: " + i.Player.ToString() + " Population: " + i.Population.ToString() + " Level: " + i.Level.ToString()));
+            listOfMyBases.ForEach(i => Console.WriteLine("Base UID: " + i.Uid.ToString() + " Player: " + i.Player.ToString() + " Population: " + i.Population.ToString() + " Level: " + i.Level.ToString()));
             Console.WriteLine();
             Console.WriteLine("My Actions: ");
-            listOfPlayerActions.ForEach(i => Console.WriteLine("Src: " + i.Src.ToString() + " Dest: " + i.Dest.ToString() + " Amount: " + i.Amount.ToString()));
+            listOfMyPlayerActions.ForEach(i => Console.WriteLine("Src: " + i.Src.ToString() + " Dest: " + i.Dest.ToString() + " Amount: " + i.Amount.ToString()));
             Console.WriteLine("*************************************************************************************");
             Console.WriteLine();
         }
