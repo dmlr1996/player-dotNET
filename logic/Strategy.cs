@@ -159,7 +159,7 @@ namespace PlayerDotNet.logic
             int deltaY = sourceBase.Position.Y - targetBase.Position.Y;
             int deltaZ = sourceBase.Position.Z - targetBase.Position.Z;
             double distance = Math.Sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
-            return (int)Math.Round(distance);
+            return (int)Math.Floor(distance);
         }
     }
 }
