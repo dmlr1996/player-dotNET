@@ -44,7 +44,7 @@ namespace PlayerDotNet.logic
             Console.WriteLine();
             Console.WriteLine("My Actions: ");
             listOfMyPlayerActions.ForEach(i => Console.WriteLine("Src: " + i.Src.ToString() + " Dest: " + i.Dest.ToString() + " Amount: " + i.Amount.ToString()));
-            Console.WriteLine("*************************************************************************************");
+            Console.WriteLine("**************************************************************************************");
             Console.WriteLine();
         }
 
